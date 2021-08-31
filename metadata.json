@@ -1,12 +1,12 @@
 {
-  "name": "attachmentgenie-example",
-  "version": "4.0.0",
+  "name": "attachmentgenie-waypoint",
+  "version": "1.0.0",
   "author": "bram vogelaar <bram@attachmentgenie.com>",
-  "summary": "Setup example",
+  "summary": "Setup waypoint",
   "license": "MIT",
-  "source": "https://github.com/attachmentgenie/attachmentgenie-example.git",
-  "project_page": "https://github.com/attachmentgenie/attachmentgenie-example",
-  "issues_url": "https://github.com/attachmentgenie/attachmentgenie-example/issues",
+  "source": "https://github.com/attachmentgenie/attachmentgenie-waypoint.git",
+  "project_page": "https://github.com/attachmentgenie/attachmentgenie-waypoint",
+  "issues_url": "https://github.com/attachmentgenie/attachmentgenie-waypoint/issues",
   "dependencies": [
     {
       "name": "puppet/archive",
@@ -51,7 +51,7 @@
     }
   ],
   "tags": [
-    "example"
+    "waypoint"
   ],
   "pdk-version": "2.2.0",
   "template-url": "https://github.com/puppetlabs/pdk-templates#2.2.0",

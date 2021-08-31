@@ -1,56 +1,56 @@
-# Class to install example.
+# Class to install waypoint.
 #
 # @api private
-class example::install {
-  if $::example::manage_user {
-    user { 'example':
+class waypoint::install {
+  if $::waypoint::manage_user {
+    user { 'waypoint':
       ensure => present,
-      home   => $::example::install_dir,
-      name   => $::example::user,
+      home   => $::waypoint::install_dir,
+      name   => $::waypoint::user,
     }
-    group { 'example':
+    group { 'waypoint':
       ensure => present,
-      name   => $::example::group
+      name   => $::waypoint::group
     }
   }
-  case $::example::install_method {
+  case $::waypoint::install_method {
     'package': {
-      if $::example::manage_repo {
-        class { 'example::repo': }
+      if $::waypoint::manage_repo {
+        class { 'waypoint::repo': }
       }
-      package { 'example':
-        ensure => $::example::package_version,
-        name   => $::example::package_name,
+      package { 'waypoint':
+        ensure => $::waypoint::package_version,
+        name   => $::waypoint::package_name,
       }
     }
     'archive': {
-      file { 'example install dir':
+      file { 'waypoint install dir':
         ensure => directory,
-        group  => $::example::group,
-        owner  => $::example::user,
-        path   => $::example::install_dir,
+        group  => $::waypoint::group,
+        owner  => $::waypoint::user,
+        path   => $::waypoint::install_dir,
       }
-      if $::example::manage_user {
-        File[$::example::install_dir] {
-          require => [Group['example'],User['example']],
+      if $::waypoint::manage_user {
+        File[$::waypoint::install_dir] {
+          require => [Group['waypoint'],User['waypoint']],
         }
       }
 
-      archive { 'example archive':
+      archive { 'waypoint archive':
         cleanup      => true,
-        creates      => "${::example::install_dir}/example",
+        creates      => "${::waypoint::install_dir}/waypoint",
         extract      => true,
-        extract_path => $::example::install_dir,
-        group        => $::example::group,
-        path         => '/tmp/example.tar.gz',
-        source       => $::example::archive_source,
-        user         => $::example::user,
-        require      => File['example install dir']
+        extract_path => $::waypoint::install_dir,
+        group        => $::waypoint::group,
+        path         => '/tmp/waypoint.tar.gz',
+        source       => $::waypoint::archive_source,
+        user         => $::waypoint::user,
+        require      => File['waypoint install dir']
       }
 
     }
     default: {
-      fail("Installation method ${::example::install_method} not supported")
+      fail("Installation method ${::waypoint::install_method} not supported")
     }
   }
 }

@@ -1,0 +1,8 @@
+[Unit]
+Description=<%= scope['waypoint::service_name'] %>
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=<%= scope['waypoint::install_dir'] %>/waypoint > /dev/null 2>&1
+ExecStop=<%= scope['waypoint::install_dir'] %>/waypoint > /dev/null 2>&1
